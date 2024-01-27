@@ -1,0 +1,42 @@
+{
+  "name": "my_site",
+  "version": "1.0.0",
+  "description": "This is an informative personal site used for practicing, showcasing skills, and personal references",
+  "main": "index.js",
+  "scripts": {
+    "build:server": "webpack --mode production",
+    "start:server": "PORT=3000 nodemon",
+    "start:dist": "node dist/bundle.js",
+    "webpack": "ts-node ./node_modules/webpack/bin/webpack.js --config webpack.config.ts"
+  },
+  "nodemonConfig": {
+    "watch": ["server/"],
+    "ext": "ts",
+    "ignore": ["server/**/*.spec.ts"],
+    "exec": "ts-node ./server/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/funmerc/my_site.git"
+  },
+  "author": "Jason Rice",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/funmerc/my_site/issues"
+  },
+  "homepage": "https://github.com/funmerc/my_site#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/webpack-node-externals": "^3.0.4",
+    "nodemon": "^3.0.3",
+    "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3",
+    "webpack": "^5.90.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-node-externals": "^3.0.0"
+  }
+}
