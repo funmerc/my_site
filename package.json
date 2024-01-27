@@ -4,9 +4,11 @@
   "description": "This is an informative personal site used for practicing, showcasing skills, and personal references",
   "main": "index.js",
   "scripts": {
+    "install:all": "yarn install; yarn --cwd angular-topics-app install; yarn --cwd vue-landing-app install",
     "build:server": "webpack --mode production",
     "build:angular": "npm run --prefix ./angular-topics-app build; rm -r ./dist/angular-topics-app; mkdir ./dist/angular-topics-app; cp -r ./angular-topics-app/dist/angular-topics-app/browser/ ./dist/angular-topics-app/",
-    "build": "yarn build:server; yarn build:angular",
+    "build:vue": "npm run --prefix ./vue-landing-app build; rm -r ./dist/vue-landing-app; mkdir ./dist/vue-landing-app; cp -r ./vue-landing-app/dist/ ./dist/vue-landing-app/",
+    "build": "yarn build:server; yarn build:vue; yarn build:angular",
     "start:server": "PORT=3000 nodemon",
     "start:angular": "yarn -cwd ./angular-topics-app start",
     "start:dist": "yarn build; PORT=3000 nodemon -cwd dist ./index.js",
@@ -40,11 +42,14 @@
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "vue": "^3.2.13",
+    "vuex": "^4.0.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
     "@types/webpack-node-externals": "^3.0.4",
+    "@types/jest": "^27.0.1",
     "nodemon": "^3.0.3",
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
@@ -61,6 +66,24 @@
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0"
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-plugin-typescript": "~5.0.0",
+    "@vue/cli-plugin-unit-jest": "~5.0.0",
+    "@vue/cli-plugin-vuex": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "@vue/eslint-config-typescript": "^9.1.0",
+    "@vue/test-utils": "^2.0.0-0",
+    "@vue/vue3-jest": "^27.0.0-alpha.1",
+    "babel-jest": "^27.0.6",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "jest": "^27.0.5",
+    "prettier": "^2.4.1",
+    "ts-jest": "^27.0.4"
   }
 }
