@@ -1,12 +1,15 @@
 {
   "name": "my_site",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This is an informative personal site used for practicing, showcasing skills, and personal references",
   "main": "index.js",
   "scripts": {
     "build:server": "webpack --mode production",
+    "build:angular": "npm run --prefix ./angular-topics-app build; rm -r ./dist/angular-topics-app; mkdir ./dist/angular-topics-app; cp -r ./angular-topics-app/dist/angular-topics-app/browser/ ./dist/angular-topics-app/",
+    "build": "yarn build:server; yarn build:angular",
     "start:server": "PORT=3000 nodemon",
-    "start:dist": "node dist/bundle.js",
+    "start:angular": "yarn -cwd ./angular-topics-app start",
+    "start:dist": "yarn build; PORT=3000 nodemon -cwd dist ./index.js",
     "webpack": "ts-node ./node_modules/webpack/bin/webpack.js --config webpack.config.ts"
   },
   "nodemonConfig": {
@@ -26,6 +29,17 @@
   },
   "homepage": "https://github.com/funmerc/my_site#readme",
   "dependencies": {
+    "@angular/animations": "^17.1.0",
+    "@angular/common": "^17.1.0",
+    "@angular/compiler": "^17.1.0",
+    "@angular/core": "^17.1.0",
+    "@angular/forms": "^17.1.0",
+    "@angular/platform-browser": "^17.1.0",
+    "@angular/platform-browser-dynamic": "^17.1.0",
+    "@angular/router": "^17.1.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.3",
     "express": "^4.18.2"
   },
   "devDependencies": {
@@ -37,6 +51,16 @@
     "typescript": "^5.3.3",
     "webpack": "^5.90.0",
     "webpack-cli": "^5.1.4",
-    "webpack-node-externals": "^3.0.0"
+    "webpack-node-externals": "^3.0.0",
+    "@angular-devkit/build-angular": "^17.1.1",
+    "@angular/cli": "^17.1.1",
+    "@angular/compiler-cli": "^17.1.0",
+    "@types/jasmine": "~5.1.0",
+    "jasmine-core": "~5.1.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0"
   }
 }
