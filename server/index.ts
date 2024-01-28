@@ -10,12 +10,16 @@ const port = process.env.PORT || 3000;
 app.use(express.static('public'))
 app.use('/topics', express.static(path.join(__dirname, '../dist/angular-topics-app')))
 app.use('/home', express.static(path.join(__dirname, '../dist/vue-landing-app')))
-// app.use('/react', express.static(path.join(__dirname, '../dist/react-references-app'))) //TODO - add app
-
+app.use('/references', express.static(path.join(__dirname, '../dist/react-references-app')))
 
 // Angular Page
 app.get('/topics', (_req, res) => {
     res.status(200).sendFile(path.join(__dirname, '../dist/angular-topics-app/index.html'))
+})
+
+// React Page
+app.get('/references', (_req, res) => {
+    res.status(200).sendFile(path.join(__dirname, '../dist/react-references-app/index.html'))
 })
 
 // Vue Page
