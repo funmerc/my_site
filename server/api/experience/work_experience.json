@@ -1,0 +1,50 @@
+[
+  {
+    "companyTitle": "Myndshft Technologies Incorporated",
+    "workDateRange": "Sep 2019 – Jan 2024",
+    "jobTitle": "Software Engineer",
+    "jobLocation": "Remote",
+    "sections": [
+      {
+        "label": "Key Technologies",
+        "value": "TypeScript, Vue.js, Angular, Node.js, Kotlin, Spring Boot"
+      },
+      {
+        "label": "Responsibilities",
+        "value": "Developed, enhanced, and maintained multiple web applications. Coordinated and communicated\nin cross-project/cross-team environments. Planned and estimated upcoming work, providing detailed assessments. Traced and debugged production issues across applications. Designed and implemented a dynamic form mapping solution for objects with embedded structures. Led a team to standardize front-end settings and styles, ensuring a cohesive user experience across applications."
+      }
+    ]
+  },
+  {
+    "companyTitle": "United Services Automobile Association",
+    "workDateRange": "May 2018 – Sep 2019",
+    "jobTitle": "Software Developer and Integrator III",
+    "jobLocation": "Phoenix, AZ",
+    "sections": [
+      {
+        "label": "Key Technologies",
+        "value": "Java, Python, JavaScript, React"
+      },
+      {
+        "label": "Responsibilities",
+        "value": "Developed and maintained back-end services, including REST and SOAP APIs, enhancing system\nperformance and reliability. Skillfully debugged and resolved issues within internal applications, contributing to improved stability and user experience. Successfully created a React-based interface, integrated with a Google Chrome extension, to augment browser functionality. Additionally, spearheaded the refactoring of core web service functionality, optimizing code efficiency and maintainability."
+      }
+    ]
+  },
+  {
+    "companyTitle": "United Services Automobile Association",
+    "workDateRange": "May 2017 – Aug 2017",
+    "jobTitle": "Information Technology Intern",
+    "jobLocation": "San Antonio, TX",
+    "sections": [
+      {
+        "label": "Key Technologies",
+        "value": "Java, Apache Wicket"
+      },
+      {
+        "label": "Responsibilities",
+        "value": "Collaborated in the design and implementation of a solution using Java and Apache Wicket,\ncontributing to enhanced application functionality and user experience. Provided support in developing and maintaining REST Services, aiding in system integration and data exchange. Applied strong debugging skills to identify and resolve complex issues, ensuring optimal system performance and reliability."
+      }
+    ]
+  }
+]

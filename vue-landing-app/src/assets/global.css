@@ -1,0 +1,32 @@
+@import "bootstrap";
+
+body {
+    background-image: url('background_image.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    margin: 0;
+    padding: 2rem;
+}
+
+.banner-img {
+    background-image: url('banner_image.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.nav-link {
+    font-family: 'Arial', sans-serif;
+    font-size: 1rem;
+    color: #333333;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.5rem 1rem;
+    transition: text-decoration 1s ease;
+}
+
+.nav-link:hover, .router-link-active {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
