@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
-import About from '@/components/sections/about/AboutSection.vue'
-import Education from '@/components/sections/education/EducationSection.vue'
-import Experience from '@/components/sections/experience/ExperienceSection.vue'
-import Skills from '@/components/sections/skills/SkillsSection.vue'
-import Summary from '@/components/sections/summary/SummarySection.vue'
+import About from '../components/sections/about/AboutSection.vue'
+import Education from '../components/sections/education/EducationSection.vue'
+import Experience from '../components/sections/experience/ExperienceSection.vue'
+import Skills from '../components/sections/skills/SkillsSection.vue'
+import Summary from '../components/sections/summary/SummarySection.vue'
 
 interface CustomRouterMeta extends Record<string | number | symbol, unknown> {
   title?: string

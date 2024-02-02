@@ -24,11 +24,26 @@
 import { defineProps } from 'vue'
 
 defineProps({
-  companyTitle: String,
-  workDateRange: String,
-  jobTitle: String,
-  jobLocation: String,
-  sections: Array,
+  companyTitle: {
+    type: String,
+    default: '',
+  },
+  workDateRange: {
+    type: String,
+    default: '',
+  },
+  jobTitle: {
+    type: String,
+    default: '',
+  },
+  jobLocation: {
+    type: String,
+    default: '',
+  },
+  sections: {
+    type: Array,
+    default: () => [],
+  },
 })
 </script>
 <style scoped>

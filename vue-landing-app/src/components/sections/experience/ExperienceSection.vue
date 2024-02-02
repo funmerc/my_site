@@ -1,31 +1,36 @@
 <template>
   <div class="experience-container">
     <h2>Work Experience</h2>
-    <div
-      :key="item.companyTitle + item.workDateRange"
-      v-for="item of items"
-      class="experience-item"
-    >
+    <div v-for="item of items" :key="getKey(item)" class="experience-item">
       <experience-block
-        :company-title="item.companyTitle"
-        :work-date-range="item.workDateRange"
-        :job-title="item.jobTitle"
-        :job-location="item.jobLocation"
-        :sections="item.sections"
+        :company-title="item?.companyTitle"
+        :work-date-range="item?.workDateRange"
+        :job-title="item?.jobTitle"
+        :job-location="item?.jobLocation"
+        :sections="item?.sections"
       ></experience-block>
     </div>
   </div>
 </template>
 <script setup lang="ts">
+import { v4 as uuid } from 'uuid'
 import ExperienceBlock from '@/components/sections/experience/ExperienceBlock.vue'
 import { ExperienceItem } from '@/models/sections/experience'
-import { onMounted, computed } from 'vue'
+import { onMounted, computed, ref, watch } from 'vue'
 import { useStore } from 'vuex'
 
 const store = useStore()
-const items = computed<ExperienceItem[]>(
+const items = ref<ExperienceItem[]>([])
+const fetchedItems = computed<ExperienceItem[]>(
   () => store.getters['experience/getItems']
 )
+
+const getKey = (item?: ExperienceItem): string =>
+  'work-experience-item-' + item?.companyTitle + uuid()
+
+watch(fetchedItems, (itemsFetched) => {
+  items.value = itemsFetched
+})
 
 onMounted(async () => {
   await store.dispatch('experience/getWorkExperienceItems')

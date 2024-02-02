@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "install-all": "yarn install; yarn --cwd angular-topics-app install; yarn --cwd vue-landing-app install",
-    "build-server": "rm -r ./dist && mkdir ./dist && webpack --mode production",
+    "build-server": "rm -r ./dist; mkdir ./dist && mkdir ./dist/data  && cp -rf server/api/experience/data/ ./dist/data/ && webpack --mode production",
     "build-angular": "npm run --prefix ./angular-topics-app build; mkdir ./dist/angular-topics-app; cp -rf ./angular-topics-app/dist/angular-topics-app/browser/ ./dist/angular-topics-app/",
     "build-vue": "npm run --prefix ./vue-landing-app build; mkdir ./dist/vue-landing-app; cp -rf ./vue-landing-app/dist/ ./dist/vue-landing-app/",
     "build-react": "npm run --prefix ./react-references-app build; mkdir ./dist/react-references-app; cp -rf ./react-references-app/build/ ./dist/react-references-app/",
@@ -36,6 +36,11 @@
   "bugs": {
     "url": "https://github.com/funmerc/my_site/issues"
   },
+  "prettier": {
+    "printWidth": 80,
+    "semi": false,
+    "singleQuote": true
+  },
   "homepage": "https://github.com/funmerc/my_site#readme",
   "dependencies": {
     "@angular/animations": "^17.1.0",
@@ -63,6 +68,7 @@
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "typescript": "^5.3.3",
+    "uuid": "^9.0.1",
     "vue": "^3.2.13",
     "vue-router": "4",
     "vuex": "^4.0.0",
