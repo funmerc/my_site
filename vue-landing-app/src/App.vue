@@ -1,26 +1,42 @@
 <template>
   <main>
+    <loading-spinner :show-spinner="pageLoading"></loading-spinner>
     <banner-component name="Jason Rice"></banner-component>
-    <div class="d-flex flex-row w-100">
-      <nav-bar></nav-bar>
-    </div>
+    <div class="content">
+      <div class="d-flex flex-row w-100">
+        <nav-bar></nav-bar>
+      </div>
 
-    <div class="m-2 p-1 view-container">
-      <router-view />
+      <div class="m-2 p-1 view-container">
+        <router-view />
+      </div>
     </div>
+    <footer-component></footer-component>
   </main>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { computed, defineComponent, onBeforeMount, onMounted } from 'vue'
 import NavBar from '@/components/nav/NavBar.vue'
 import BannerComponent from '@/components/banner/BannerComponent.vue'
+import { useStore } from 'vuex'
+import LoadingSpinner from '@/components/shared/LoadingSpinner.vue'
+import FooterComponent from '@/components/footer/FooterComponent.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
+    FooterComponent,
+    LoadingSpinner,
     BannerComponent,
     NavBar,
+  },
+  setup(props, ctx) {
+    const store = useStore()
+    const pageLoading = computed(() => store.getters['pageLoading'])
+    return {
+      pageLoading,
+    }
   },
 })
 </script>

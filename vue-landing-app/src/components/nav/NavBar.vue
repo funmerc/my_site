@@ -18,7 +18,7 @@
           <li class="nav-item" v-for="route of routes" :key="route.title">
             <router-link
               class="nav-link"
-              :to="route.path"
+              :to="route.path ? route.path : '#'"
               :routerLinkActive="pathIsActive(route.path)"
               >{{ route.title }}</router-link
             >

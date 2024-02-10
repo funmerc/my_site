@@ -14,8 +14,8 @@
 </template>
 <script setup lang="ts">
 import { v4 as uuid } from 'uuid'
-import ExperienceBlock from '@/components/sections/experience/ExperienceBlock.vue'
-import { ExperienceItem } from '@/models/sections/experience'
+import ExperienceBlock from './ExperienceBlock.vue'
+import { ExperienceItem } from '../../../models/sections/experience'
 import { onMounted, computed, ref, watch } from 'vue'
 import { useStore } from 'vuex'
 

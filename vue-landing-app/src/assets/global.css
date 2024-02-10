@@ -1,6 +1,8 @@
 @import "bootstrap";
 
 body {
+    display: flex;
+    flex-direction: column;
     background-image: url('background_image.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -10,8 +12,9 @@ body {
     padding: 2rem;
 }
 
-.banner-img {
-    background-color: #333;
+.content {
+    min-height: 100vh;
+    flex: 1;
 }
 
 .nav-link {

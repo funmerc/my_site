@@ -1,3 +1,4 @@
-import ExperienceController from "./experience/controller";
+import ExperienceController from './experience/controller'
+import SummaryController from './summary/controller'
 
-export default [ExperienceController];
+export default [ExperienceController, SummaryController]

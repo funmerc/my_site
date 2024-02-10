@@ -15,12 +15,13 @@ defineProps({
 <style scoped>
 .banner {
   color: #fff;
+  background-color: #333;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 h1 {

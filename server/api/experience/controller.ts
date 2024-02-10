@@ -15,8 +15,5 @@ export const getWorkExperienceItems = async (_req: any, res: any) => {
   }
 }
 
-router.get('/work_experience_items', (req, res) =>
-  getWorkExperienceItems(req, res)
-)
-
+router.get('/work_experience_items', getWorkExperienceItems)
 export default router

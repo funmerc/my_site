@@ -9,6 +9,7 @@ const actions: ActionTree<State, any> = {
   }: {
     commit: Commit
   }): Promise<void> => {
+    commit('setLoading', true, { root: true })
     const path = `${getServer()}/api/work_experience_items`
     const items = await axios
       .get(path, {
@@ -21,6 +22,7 @@ const actions: ActionTree<State, any> = {
         return { data: [] }
       })
     commit('setItems', items.data)
+    commit('setLoading', false, { root: true })
   },
 }
 
