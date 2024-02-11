@@ -1,26 +1,30 @@
 {
   "name": "my_site",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "This is an informative personal site used for practicing, showcasing skills, and personal references",
   "main": "index.js",
   "scripts": {
-    "install:all": "yarn install; yarn --cwd angular-topics-app install; yarn --cwd vue-landing-app install",
-    "build:server": "webpack --mode production",
-    "build:angular": "npm run --prefix ./angular-topics-app build; rm -r ./dist/angular-topics-app; mkdir ./dist/angular-topics-app; cp -r ./angular-topics-app/dist/angular-topics-app/browser/ ./dist/angular-topics-app/",
-    "build:vue": "npm run --prefix ./vue-landing-app build; rm -r ./dist/vue-landing-app; mkdir ./dist/vue-landing-app; cp -r ./vue-landing-app/dist/ ./dist/vue-landing-app/",
-    "build:react": "npm run --prefix ./react-references-app build; rm -r ./dist/react-references-app; mkdir ./dist/react-references-app; cp -r ./react-references-app/build/ ./dist/react-references-app/",
-    "build": "yarn build:server; yarn build:vue; yarn build:angular; yarn build:react",
-    "start:server": "PORT=3000 nodemon",
-    "start:angular": "yarn -cwd ./angular-topics-app start",
-    "start:vue": "yarn -cwd ./vue-landing-app start",
-    "start:react": "yarn -cwd ./react-references-app start",
-    "start": "yarn build; PORT=3000 nodemon -cwd dist ./index.js",
+    "install-all": "yarn install; yarn --cwd angular-topics-app install; yarn --cwd vue-landing-app install; yarn --cwd react-references-app install;",
+    "build:server": "npm version patch; node updateVersion.js; rm -r ./dist; mkdir ./dist && mkdir ./dist/data && cp -f ./version_data.json ./dist/data/ && cp -rf server/api/experience/data/ ./dist/data/ && cp -rf server/api/summary/data/ ./dist/data/ && webpack --mode production",
+    "build:angular": "npm run --prefix ./angular-topics-app build; mkdir ./dist/angular-topics-app; cp -rf ./angular-topics-app/dist/angular-topics-app/browser/ ./dist/angular-topics-app/",
+    "build:vue": "npm run --prefix ./vue-landing-app build; mkdir ./dist/vue-landing-app; cp -rf ./vue-landing-app/dist/ ./dist/vue-landing-app/",
+    "build:react": "npm run --prefix ./react-references-app build; mkdir ./dist/react-references-app; cp -rf ./react-references-app/build/ ./dist/react-references-app/",
+    "build": "npm run build:server; npm run build:vue; npm run build:angular; npm run build:react",
+    "server": "PORT=3000 LOCAL=true nodemon",
+    "start:angular": "npm run --prefix ./angular-topics-app start",
+    "start:vue": "npm run --prefix ./vue-landing-app start",
+    "start:react": "npm run --prefix ./react-references-app start",
+    "start": "yarn build && PORT=3000 nodemon --cwd dist ./index.js",
     "webpack": "ts-node ./node_modules/webpack/bin/webpack.js --config webpack.config.ts"
   },
   "nodemonConfig": {
-    "watch": ["server/"],
+    "watch": [
+      "server/"
+    ],
     "ext": "ts",
-    "ignore": ["server/**/*.spec.ts"],
+    "ignore": [
+      "server/**/*.spec.ts"
+    ],
     "exec": "ts-node ./server/index.ts"
   },
   "repository": {
@@ -31,6 +35,11 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/funmerc/my_site/issues"
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": false,
+    "singleQuote": true
   },
   "homepage": "https://github.com/funmerc/my_site#readme",
   "dependencies": {
@@ -49,38 +58,33 @@
     "@types/node": "^16.18.76",
     "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18",
+    "axios": "^1.6.7",
+    "bootstrap": "5.3.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.5",
+    "helmet": "^7.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
-    "typescript": "^5.3.3",
-    "web-vitals": "^2.1.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.14.3",
-    "express": "^4.18.2",
+    "typescript": "^5.3.3",
+    "uuid": "^9.0.1",
     "vue": "^3.2.13",
-    "vuex": "^4.0.0"
+    "vue-router": "4",
+    "vuex": "^4.0.0",
+    "web-vitals": "^2.1.4",
+    "zone.js": "~0.14.3"
   },
   "devDependencies": {
-    "@types/express": "^4.17.21",
-    "@types/webpack-node-externals": "^3.0.4",
-    "nodemon": "^3.0.3",
-    "ts-loader": "^9.5.1",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.3.3",
-    "webpack": "^5.90.0",
-    "webpack-cli": "^5.1.4",
-    "webpack-node-externals": "^3.0.0",
     "@angular-devkit/build-angular": "^17.1.1",
     "@angular/cli": "^17.1.1",
     "@angular/compiler-cli": "^17.1.0",
+    "@types/express": "^4.17.21",
     "@types/jasmine": "~5.1.0",
-    "jasmine-core": "~5.1.0",
-    "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.2.0",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
+    "@types/uuid": "^9.0.8",
+    "@types/webpack-node-externals": "^3.0.4",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
@@ -96,8 +100,21 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.0.3",
+    "jasmine-core": "~5.1.0",
     "jest": "^27.0.5",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "nodemon": "^3.0.3",
     "prettier": "^2.4.1",
-    "ts-jest": "^27.0.4"
+    "ts-jest": "^27.0.4",
+    "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3",
+    "webpack": "^5.90.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-node-externals": "^3.0.0"
   }
 }

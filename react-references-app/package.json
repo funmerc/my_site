@@ -1,6 +1,6 @@
 {
   "name": "react-references-app",
-  "version": "0.1.0",
+  "version": "0.1.23",
   "private": true,
   "homepage": "/references",
   "dependencies": {
@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "npm version patch; react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
