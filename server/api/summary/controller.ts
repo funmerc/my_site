@@ -18,7 +18,7 @@ export const getSummaryImageLinks = async (_req: any, res: any) => {
 
 export const getSummaryImage = async (req: any, res: any) => {
   try {
-    const image = req.params?.image || null
+    const image = `${req.params?.image}` || null
     res.status(200).sendFile(path.join(__dirname, `data/${image}.png`))
   } catch (err: any) {
     res.status(500).json({

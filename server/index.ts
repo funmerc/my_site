@@ -1,5 +1,7 @@
 import express from 'express'
 import cors from 'cors'
+import helmet from 'helmet'
+import rateLimit from 'express-rate-limit'
 import path from 'path'
 import Logger from './modules/logger'
 import APIRoutes from './api/routes'
@@ -9,8 +11,28 @@ const logger = Logger('index.ts')
 const app = express()
 const port = process.env.PORT || 3000
 
+const limiter = rateLimit({
+  windowMs: 10 * 60 * 1000, // 10 minutes
+  limit: 100, // each IP can make 100 requests/10 minutes,
+  standardHeaders: true,
+  legacyHeaders: true,
+})
+
+app.use(limiter)
+app.use(helmet())
+
 if (process.env?.LOCAL) {
   app.use(cors())
+} else {
+  app.use(
+    helmet.contentSecurityPolicy({
+      directives: {
+        'default-src': ["'self'"],
+        'script-src': ["'self'"],
+        'img-src': ["'self'", 'blob:'],
+      },
+    })
+  )
 }
 
 app.use(express.static('public'))
