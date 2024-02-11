@@ -1,10 +1,10 @@
 {
   "name": "angular-topics-app",
-  "version": "0.0.0",
+  "version": "0.0.15",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --base-href=/topics/",
+    "build": "npm version patch; ng build --base-href=/topics/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

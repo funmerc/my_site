@@ -47,6 +47,11 @@ const openLinkedin = (event: any) => {
   width: 100%;
   padding: 20px;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+
+  span {
+    padding-top: 10px;
+    color: #d9d9d9;
+  }
 }
 
 .social-icons {

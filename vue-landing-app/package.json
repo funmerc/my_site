@@ -1,10 +1,10 @@
 {
   "name": "vue-landing-app",
-  "version": "0.1.0",
+  "version": "0.1.15",
   "private": true,
   "scripts": {
     "start": "yarn lint && yarn prettier:fix && vue-cli-service serve",
-    "build": "yarn lint; vue-cli-service build",
+    "build": "npm version patch; yarn lint; vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "prettier:fix": "yarn prettier -w ./src/components/*",
     "lint": "vue-cli-service lint --fix"

@@ -28,6 +28,7 @@ const actions: ActionTree<State, any> = {
     commit: Commit
   }): Promise<void> => {
     commit('setLoading', true, { root: true })
+    commit('setLoadingBlur', false, { root: true })
     const path = `${getServer()}/api/summary_image_links`
     const response = await axios
       .get(path, {

@@ -2,7 +2,7 @@
   <transition name="fade">
     <div
       class="spinner-container"
-      :show-background="showBackground"
+      :class="{ backgroundBlur: showBlur }"
       v-if="showSpinner"
     >
       <div class="spinner-border text-secondary" role="status">
@@ -19,9 +19,9 @@ defineProps({
     type: Boolean,
     default: () => false,
   },
-  showBackground: {
+  showBlur: {
     type: Boolean,
-    default: () => true,
+    default: () => false,
   },
 })
 </script>
@@ -33,12 +33,16 @@ defineProps({
   top: 0;
   left: 0;
   z-index: 1;
+  opacity: 1;
   width: 100%;
   height: 100%;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(5px);
+
+  .backgroundBlur {
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(5px);
+  }
 }
 
 .fade-enter-active,

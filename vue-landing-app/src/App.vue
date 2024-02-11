@@ -1,6 +1,9 @@
 <template>
   <main>
-    <loading-spinner :show-spinner="pageLoading"></loading-spinner>
+    <loading-spinner
+      :show-spinner="pageLoading"
+      :show-blur="pageLoadingBlur"
+    ></loading-spinner>
     <banner-component name="Jason Rice"></banner-component>
     <div class="content">
       <div class="d-flex flex-row w-100">
@@ -11,7 +14,7 @@
         <router-view />
       </div>
     </div>
-    <footer-component></footer-component>
+    <footer-component :version="version || undefined"></footer-component>
   </main>
 </template>
 
@@ -31,11 +34,18 @@ export default defineComponent({
     BannerComponent,
     NavBar,
   },
-  setup(props, ctx) {
+  setup() {
     const store = useStore()
     const pageLoading = computed(() => store.getters['pageLoading'])
+    const pageLoadingBlur = computed(() => store.getters['pageLoadingBlur'])
+    const version = computed(() => store.getters['appVersion'])
+
+    onBeforeMount(() => store.dispatch('getConfiguration'))
+
     return {
       pageLoading,
+      pageLoadingBlur,
+      version,
     }
   },
 })
