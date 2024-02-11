@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { getServer } from '../modules/http'
 import { Commit, createStore } from 'vuex'
+import { EducationModule } from './education'
 import { ExperienceModule } from './experience'
 import { SummaryModule } from './summary'
 
@@ -34,6 +35,7 @@ export default createStore({
   },
   actions: rootActions,
   modules: {
+    education: EducationModule,
     experience: ExperienceModule,
     summary: SummaryModule,
   },
