@@ -34,7 +34,6 @@ if (process.env?.LOCAL) {
   )
 }
 
-app.use(express.static('public'))
 app.use(
   '/topics',
   express.static(path.join(__dirname, '../dist/angular-topics-app'))
