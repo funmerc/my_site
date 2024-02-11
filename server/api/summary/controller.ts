@@ -1,6 +1,5 @@
 import express from 'express'
 import Service from './service'
-import path from 'path'
 
 const router = express.Router()
 
@@ -19,7 +18,8 @@ export const getSummaryImageLinks = async (_req: any, res: any) => {
 export const getSummaryImage = async (req: any, res: any) => {
   try {
     const image = `${req.params?.image}` || null
-    res.status(200).sendFile(path.join(__dirname, `data/${image}.png`))
+    const path = Service.getImagePath(image)
+    res.status(200).sendFile(path)
   } catch (err: any) {
     res.status(500).json({
       message:
