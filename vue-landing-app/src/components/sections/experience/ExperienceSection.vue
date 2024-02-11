@@ -38,18 +38,21 @@ onMounted(async () => {
 </script>
 <style scoped>
 .experience-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
   padding: 10px;
   text-align: start;
+  h2 {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
 }
 
 .experience-item {
   display: flex;
   flex-direction: column;
   padding: 0 4px;
-}
-
-h2 {
-  text-decoration: underline;
-  text-underline-offset: 4px;
 }
 </style>

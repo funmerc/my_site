@@ -18,12 +18,11 @@ const limiter = rateLimit({
   legacyHeaders: true,
 })
 
-app.use(limiter)
-app.use(helmet())
-
 if (process.env?.LOCAL) {
   app.use(cors())
 } else {
+  app.use(limiter)
+  app.use(helmet())
   app.use(
     helmet.contentSecurityPolicy({
       directives: {
