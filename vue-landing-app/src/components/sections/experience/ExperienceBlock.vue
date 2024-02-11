@@ -62,7 +62,7 @@ defineProps({
 
 .experience-block-sections {
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   span {
     padding-right: 1px;
     font-weight: bold;

@@ -16,6 +16,7 @@
     </section>
   </div>
 </template>
+
 <script setup lang="ts">
 import { defineProps } from 'vue'
 
@@ -42,15 +43,18 @@ defineProps({
   },
 })
 </script>
+
 <style scoped>
 .education-block {
   padding: 10px 0;
   section {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     padding-top: 2px;
     .split-section {
       display: flex;
+      flex-flow: row wrap;
       justify-content: space-between;
     }
   }
@@ -58,7 +62,7 @@ defineProps({
 
 .relevant-coursework {
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   span {
     padding-right: 1px;
     font-weight: bold;
