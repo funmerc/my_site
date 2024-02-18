@@ -10,7 +10,7 @@
     "build:vue": "npm run --prefix ./vue-landing-app build; mkdir ./dist/vue-landing-app; cp -rf ./vue-landing-app/dist/ ./dist/vue-landing-app/",
     "build:react": "npm run --prefix ./react-references-app build; mkdir ./dist/react-references-app; cp -rf ./react-references-app/build/ ./dist/react-references-app/",
     "build": "npm run build:server; npm run build:vue; npm run build:angular; npm run build:react",
-    "build:aws-zip": "npm run build; cp -f ./package.dist.json ./dist/package.json; zip my-site.zip -r ./dist/; mv -f ./my_site.zip build/;",
+    "build:aws-zip": "npm run build; cp -f ./package.dist.json ./dist/package.json; zip my_site.zip -r ./dist/; mv -f ./my_site.zip build/;",
     "server": "PORT=3000 LOCAL=true nodemon",
     "start:angular": "npm run --prefix ./angular-topics-app start",
     "start:vue": "npm run --prefix ./vue-landing-app start",

@@ -134,4 +134,4 @@ dist
 .idea
 
 # AWS Local build
-build
+build/

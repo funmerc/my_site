@@ -1,6 +1,6 @@
 {
   "name": "vue-landing-app",
-  "version": "0.1.35",
+  "version": "0.1.37",
   "private": true,
   "scripts": {
     "start": "yarn lint && yarn prettier:fix && vue-cli-service serve",
