@@ -2,19 +2,20 @@
   "name": "my_site",
   "version": "1.0.1",
   "description": "This is an informative personal site used for practicing, showcasing skills, and personal references",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "install-all": "yarn install; yarn --cwd angular-topics-app install; yarn --cwd vue-landing-app install; yarn --cwd react-references-app install;",
-    "build:server": "npm version patch; node updateVersion.js; rm -r ./dist; mkdir ./dist && mkdir ./dist/data && cp -f ./version_data.json ./dist/data/ && cp -rf server/api/experience/data/ ./dist/data/ && cp -rf server/api/education/data/ ./dist/data/ && cp -rf server/api/summary/data/ ./dist/data/ && cp -rf server/api/about/data/ ./dist/data/ && webpack --mode production",
+    "build:server": "npm version patch; npm install; node updateVersion.js; rm -r ./dist; mkdir ./dist && mkdir ./dist/data && cp -f ./version_data.json ./dist/data/ && cp -rf server/api/experience/data/ ./dist/data/ && cp -rf server/api/education/data/ ./dist/data/ && cp -rf server/api/summary/data/ ./dist/data/ && cp -rf server/api/about/data/ ./dist/data/ && webpack --mode production",
     "build:angular": "npm run --prefix ./angular-topics-app build; mkdir ./dist/angular-topics-app; cp -rf ./angular-topics-app/dist/angular-topics-app/browser/ ./dist/angular-topics-app/",
     "build:vue": "npm run --prefix ./vue-landing-app build; mkdir ./dist/vue-landing-app; cp -rf ./vue-landing-app/dist/ ./dist/vue-landing-app/",
     "build:react": "npm run --prefix ./react-references-app build; mkdir ./dist/react-references-app; cp -rf ./react-references-app/build/ ./dist/react-references-app/",
     "build": "npm run build:server; npm run build:vue; npm run build:angular; npm run build:react",
+    "build:aws-zip": "npm run build; cp -f ./package.dist.json ./dist/package.json; zip my-site.zip -r ./dist/; mv -f ./my-site.zip build/;",
     "server": "PORT=3000 LOCAL=true nodemon",
     "start:angular": "npm run --prefix ./angular-topics-app start",
     "start:vue": "npm run --prefix ./vue-landing-app start",
     "start:react": "npm run --prefix ./react-references-app start",
-    "start": "yarn build && PORT=3000 nodemon --cwd dist ./index.js",
+    "start": "yarn build && PORT=3000 nodemon --cwd dist ./app.js",
     "webpack": "ts-node ./node_modules/webpack/bin/webpack.js --config webpack.config.ts"
   },
   "nodemonConfig": {

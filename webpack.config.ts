@@ -20,7 +20,7 @@ const config: Configuration = {
     extensions: ['.tsx', '.ts', '.js'],
   },
   output: {
-    filename: 'index.js',
+    filename: 'app.js',
     path: path.resolve(__dirname, 'dist'),
   },
 }
