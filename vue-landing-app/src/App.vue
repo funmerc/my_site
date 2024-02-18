@@ -5,6 +5,7 @@
       :show-blur="pageLoadingBlur"
     ></loading-spinner>
     <banner-component name="Jason Rice"></banner-component>
+
     <div class="content">
       <div class="d-flex flex-row w-100">
         <nav-bar></nav-bar>

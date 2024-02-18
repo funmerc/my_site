@@ -1,26 +1,42 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light">
+  <nav class="navbar navbar-expand-lg navbar-light nav-bar-custom">
     <div class="container-fluid">
-      <router-link class="navbar-brand" to="/"></router-link>
       <button
-        aria-controls="navigationBar"
-        aria-expanded="false"
-        aria-label="Navigation Toggle"
         class="navbar-toggler"
-        data-bs-target="#navigationBar"
-        data-bs-toggle="collapse"
         type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navBarMenu"
+        aria-controls="navBarMenu"
+        aria-expanded="false"
+        aria-label="Toggle nav"
+        @click="toggleMenu"
       >
-        <span class="navbar-toggler-icon"></span>
+        <svg
+          id="nav-bar-icon"
+          class="navbar-toggler-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 448 512"
+        >
+          <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+          <path
+            d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"
+          />
+        </svg>
       </button>
-      <div id="navigationBar" class="collapse navbar-collapse">
-        <ul class="navbar-nav">
-          <li class="nav-item" v-for="route of routes" :key="route.title">
+      <div
+        id="navBarMenu"
+        class="collapse navbar-collapse"
+        :class="{ 'd-flex py-1': menuOpen }"
+      >
+        <ul class="navbar-nav" :class="{ 'navbar-menu-custom': menuOpen }">
+          <li class="nav-item" v-for="r of routes" :key="r.title">
             <router-link
               class="nav-link"
-              :to="route.path ? route.path : '#'"
-              :routerLinkActive="pathIsActive(route.path)"
-              >{{ route.title }}</router-link
+              :class="{ active: route.path === r.path }"
+              :to="r.path ? r.path : '#'"
+              :routerLinkActive="pathIsActive(r.path)"
+              @click="closeMenu"
+              >{{ r.title }}</router-link
             >
           </li>
         </ul>
@@ -37,6 +53,10 @@ const route = useRoute()
 const router = useRouter()
 const activeRoute = ref<{ path: string; title: string }>()
 const routes = ref<{ path: string; title: string }[]>([])
+const menuOpen = ref<boolean>(false)
+
+const toggleMenu = () => (menuOpen.value = !menuOpen.value)
+const closeMenu = () => (menuOpen.value = false)
 
 const pathIsActive = (path: string) => path === activeRoute.value?.path
 
@@ -61,4 +81,21 @@ onMounted(async () => {
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+.nav-bar-custom {
+  z-index: 2;
+}
+.navbar-menu-custom {
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  width: 100%;
+  height: 100%;
+  li {
+    padding: 10px 0;
+  }
+}
+</style>
