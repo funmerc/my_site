@@ -1,0 +1,17 @@
+{
+  "name": "my_site",
+  "version": "1.0.1",
+  "description": "This is an informative personal site used for practicing, showcasing skills, and personal references",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./app.js"
+  },
+  "author": "Jason Rice",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/funmerc/my_site/issues"
+  },
+  "homepage": "https://github.com/funmerc/my_site#readme",
+  "dependencies": {},
+  "devDependencies": {}
+}
