@@ -1,6 +1,6 @@
 {
   "name": "vue-landing-app",
-  "version": "0.1.40",
+  "version": "0.1.41",
   "private": true,
   "scripts": {
     "start": "npm run lint && npm run prettier:fix && vue-cli-service serve",
