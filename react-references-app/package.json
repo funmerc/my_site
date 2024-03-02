@@ -1,6 +1,6 @@
 {
   "name": "react-references-app",
-  "version": "0.1.48",
+  "version": "0.1.50",
   "private": true,
   "homepage": "/references",
   "dependencies": {
