@@ -1,6 +1,6 @@
 {
   "name": "my_site",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This is an informative personal site used for practicing, showcasing skills, and personal references",
   "main": "app.js",
   "engines": {
