@@ -34,7 +34,7 @@ if (process.env?.LOCAL) {
   )
 }
 
-const folderLocation = `${process.env?.LOCAL ? '../dist/' : './'}`
+const folderLocation = '../dist/'
 
 app.use(
   '/topics',
