@@ -11,6 +11,7 @@ enum ExistingFiles {
   postgres = 'postgres',
   typescript = 'typescript',
   vuejs = 'vuejs',
+  git = 'git',
 }
 
 const getImageLinks = () => file
