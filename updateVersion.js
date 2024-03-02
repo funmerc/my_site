@@ -5,7 +5,6 @@ const UTF8 = 'utf8'
 
 function start() {
   const packagePath = path.join(__dirname, 'package.json')
-  const packageDistPath = path.join(__dirname, 'package.dist.json')
   const versionPath = path.join(__dirname, 'version_data.json')
   const localVersionPath = path.join(
     __dirname,
@@ -17,7 +16,6 @@ function start() {
   )
 
   const packageJson = JSON.parse(fs.readFileSync(packagePath, UTF8))
-  const packageDistJson = JSON.parse(fs.readFileSync(packageDistPath, UTF8))
   const version = JSON.parse(fs.readFileSync(versionPath, UTF8))
 
   console.log(
@@ -25,9 +23,7 @@ function start() {
   )
 
   const newVersion = { version: packageJson.version }
-  packageDistJson.version = packageJson.version
 
-  fs.writeFileSync(packageDistPath, JSON.stringify(packageDistJson, null, 2))
   fs.writeFileSync(versionPath, JSON.stringify(newVersion, null, 2))
   fs.writeFileSync(localVersionPath, JSON.stringify(newVersion, null, 2))
   console.log('version update successful.')
