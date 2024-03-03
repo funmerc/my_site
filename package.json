@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "install-all": "npm ci; npm --prefix ./angular-topics-app ci; npm --prefix ./vue-landing-app ci; npm --prefix ./react-references-app ci;",
-    "build:server": "npm version patch; npm run install-all; node updateVersion.js; rm -r ./dist; mkdir ./dist && mkdir ./dist/data && cp -f ./version_data.json ./dist/data/ && cp -rf server/api/experience/data/ ./dist/data/ && cp -rf server/api/education/data/ ./dist/data/ && cp -rf server/api/summary/data/ ./dist/data/ && cp -rf server/api/about/data/ ./dist/data/ && webpack --mode production",
+    "build:server": "npm version patch; npm run install-all; node updateVersion.js; rm -r ./dist; mkdir ./dist && mkdir ./dist/data && cp -f ./version_data.json ./dist/data/ && cp -rf server/api/experience/data/* ./dist/data/ && cp -rf server/api/education/data/* ./dist/data/ && cp -rf server/api/summary/data/* ./dist/data/ && cp -rf server/api/about/data/* ./dist/data/ && webpack --mode production",
     "build:angular": "npm run --prefix ./angular-topics-app build; mkdir ./dist/angular-topics-app; cp -rf ./angular-topics-app/dist/angular-topics-app/browser/* ./dist/angular-topics-app/",
     "build:vue": "npm run --prefix ./vue-landing-app build; mkdir ./dist/vue-landing-app; cp -rf ./vue-landing-app/dist/* ./dist/vue-landing-app/",
     "build:react": "npm run --prefix ./react-references-app build; mkdir ./dist/react-references-app; cp -rf ./react-references-app/build/* ./dist/react-references-app/",
