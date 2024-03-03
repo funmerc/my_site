@@ -37,7 +37,7 @@ if (process.env?.LOCAL) {
 const folderLocation = `${process.env?.LOCAL ? '../dist/' : './'}`
 
 app.use(
-  '/references',
+  '/angular-app',
   express.static(path.join(__dirname, `${folderLocation}angular-app`))
 )
 app.use(
@@ -45,21 +45,21 @@ app.use(
   express.static(path.join(__dirname, `${folderLocation}vue-app`))
 )
 app.use(
-  '/topics',
+  '/react-app',
   express.static(path.join(__dirname, `${folderLocation}react-app`))
 )
 
 app.use('/api', APIRoutes)
 
 // Angular Page
-app.get('/references', (_req, res) => {
+app.get('/angular-app', (_req, res) => {
   res
     .status(200)
     .sendFile(path.join(__dirname, `${folderLocation}angular-app/index.html`))
 })
 
 // React Page
-app.get('/topics', (_req, res) => {
+app.get('/react-app', (_req, res) => {
   res
     .status(200)
     .sendFile(path.join(__dirname, `${folderLocation}react-app/index.html`))
