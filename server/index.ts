@@ -37,45 +37,39 @@ if (process.env?.LOCAL) {
 const folderLocation = `${process.env?.LOCAL ? '../dist/' : './'}`
 
 app.use(
-  '/topics',
-  express.static(path.join(__dirname, `${folderLocation}angular-topics-app`))
+  '/references',
+  express.static(path.join(__dirname, `${folderLocation}angular-app`))
 )
 app.use(
   '/vue-app',
-  express.static(path.join(__dirname, `${folderLocation}vue-landing-app`))
+  express.static(path.join(__dirname, `${folderLocation}vue-app`))
 )
 app.use(
-  '/references',
-  express.static(path.join(__dirname, `${folderLocation}react-references-app`))
+  '/topics',
+  express.static(path.join(__dirname, `${folderLocation}react-app`))
 )
 
 app.use('/api', APIRoutes)
 
 // Angular Page
-app.get('/topics', (_req, res) => {
-  res
-    .status(200)
-    .sendFile(
-      path.join(__dirname, `${folderLocation}angular-topics-app/index.html`)
-    )
-})
-
-// React Page
 app.get('/references', (_req, res) => {
   res
     .status(200)
-    .sendFile(
-      path.join(__dirname, `${folderLocation}react-references-app/index.html`)
-    )
+    .sendFile(path.join(__dirname, `${folderLocation}angular-app/index.html`))
+})
+
+// React Page
+app.get('/topics', (_req, res) => {
+  res
+    .status(200)
+    .sendFile(path.join(__dirname, `${folderLocation}react-app/index.html`))
 })
 
 // Vue Page
 app.get('/vue-app', (_req, res) => {
   res
     .status(200)
-    .sendFile(
-      path.join(__dirname, `${folderLocation}vue-landing-app/index.html`)
-    )
+    .sendFile(path.join(__dirname, `${folderLocation}vue-app/index.html`))
 })
 
 app.get('*', (req, res) => {
