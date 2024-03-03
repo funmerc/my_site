@@ -12,9 +12,6 @@ interface CustomRouterMeta extends Record<string | number | symbol, unknown> {
   right?: boolean
 }
 
-const isLocalDev = window.location.href.includes('localhost:8080')
-const isLocalServer = window.location.href.includes('localhost:8080')
-
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/summary',
@@ -51,13 +48,15 @@ const routes: Array<RouteRecordRaw> = [
     name: 'References',
     meta: { title: 'References', right: true } as CustomRouterMeta,
     beforeEnter: (_to, _from, _next) => {
-      console.log('im here')
+      const isLocalDev = window?.location?.host?.includes('localhost:8080')
+      const isLocalServer = window?.location?.host?.includes('localhost:3000')
+
       if (isLocalDev) {
         window.location.replace('http://localhost:4200')
       } else if (isLocalServer) {
-        window.location.replace('http://localhost:3000/references')
+        window.location.replace('http://localhost:3000/angular-app')
       } else {
-        window.location.replace('https://jasonrice.me/references')
+        window.location.replace('https://www.jasonrice.me/angular-app')
       }
     },
     component: () => ({}),
