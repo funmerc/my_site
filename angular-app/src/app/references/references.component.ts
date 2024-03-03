@@ -12,7 +12,7 @@ export class ReferencesComponent {
   isLocal = window?.location?.host?.includes('localhost:4200')
   isLocalServer = window?.location?.host?.includes('localhost:3000')
   goBack() {
-    let url = 'https://jasonrice.me'
+    let url = 'https://www.jasonrice.me/'
     if (this.isLocal) {
       url = 'http://localhost:8080/'
     } else if (this.isLocalServer) {
